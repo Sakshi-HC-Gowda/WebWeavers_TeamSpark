@@ -1,45 +1,56 @@
 # IEEE SMVITM Website
 
-React + Vite + TypeScript + Tailwind + shadcn/ui
+A modern website built with **React**, **Vite**, **TypeScript**, **Tailwind CSS**, and **shadcn/ui**.
 
-### Prerequisites
-- Node.js 18+ and npm
+## Prerequisites
 
-### Getting started
-```powershell
+- [Node.js](https://nodejs.org/) v18+
+- [npm](https://www.npmjs.com/)
+
+## Getting Started
+
+```bash
 cd "Website IEEE"
 npm install
 npm run dev
 ```
-The dev server prints the URL (e.g., http://localhost:5173 or http://localhost:8081). Press Ctrl+C to stop.
 
-### Build
+- The dev server will print a local URL (e.g., `http://localhost:5173`).  
+- Press <kbd>Ctrl</kbd>+<kbd>C</kbd> to stop.
+
+## Build & Preview
+
 ```bash
 npm run build
 npm run preview
 ```
 
-### Project structure
-- `src/pages/` route pages (e.g., `Home.tsx`, `About.tsx`, `Team.tsx`, `Login.tsx`)
-- `src/components/` shared UI (`Header`, `Footer`, `ui/*`)
-- `public/` static assets served as-is
+## Project Structure
 
-### Routing
-Configured in `src/App.tsx` using `react-router-dom`.
-- Add routes in the `<Routes>` block
-- Header links are defined in `src/components/Header.tsx`
+- `src/pages/` — Route pages (`Home.tsx`, `About.tsx`, `Team.tsx`, `Login.tsx`)
+- `src/components/` — Shared UI (`Header.tsx`, `Footer.tsx`, `ui/*`)
+- `public/` — Static assets
 
-### Login page
-- File: `src/pages/Login.tsx`
-- Simple email/password form with shadcn/ui components
-- On submit, it currently redirects to `/` (placeholder). Wire this to your auth API as needed.
+## Routing
 
-### Team data (dynamic)
-- Data file: `public/team.json`
-- Page: `src/pages/Team.tsx` fetches `/team.json` at runtime
-- If `team.json` is missing or invalid, the page shows a fallback set
+- Configured in [`src/App.tsx`](src/App.tsx) using [react-router-dom](https://reactrouter.com/).
+- Add routes in the `<Routes>` block.
+- Header links are defined in [`src/components/Header.tsx`](src/components/Header.tsx).
 
-Schema (example):
+## Login Page
+
+- File: [`src/pages/Login.tsx`](src/pages/Login.tsx)
+- Simple email/password form using shadcn/ui components.
+- On submit, currently redirects to `/` (placeholder).
+- Wire this to your auth API as needed.
+
+## Team Data (Dynamic)
+
+- Data: [`public/team.json`](public/team.json)
+- Page: [`src/pages/Team.tsx`](src/pages/Team.tsx) fetches `/team.json` at runtime.
+- If `team.json` is missing or invalid, a fallback set is shown.
+
+Example schema:
 ```json
 {
   "year": "2024-25",
@@ -75,29 +86,38 @@ Schema (example):
 }
 ```
 
-Add photos under `public/photos/` and reference with `/photos/<file>`.
+- Add photos under `public/photos/` and reference them as `/photos/<file>`.
 
-### Styling
-- Tailwind CSS configured via `tailwind.config.ts`
-- shadcn/ui components in `src/components/ui/*`
+## Styling
 
-### Linting
+- Tailwind CSS configured via [`tailwind.config.ts`](tailwind.config.ts).
+- shadcn/ui components in `src/components/ui/*`.
+
+## Linting
+
 ```bash
 npm run lint
 ```
 
-### Environment variables
-Vite uses `import.meta.env`. Create a `.env` if needed (e.g., API base URL):
-```env
-VITE_API_BASE_URL=https://api.example.com
-```
+## Environment Variables
 
-### Deployment
-Any static host supporting Vite build output (e.g., Netlify, Vercel, GitHub Pages):
-1. `npm run build`
-2. Deploy `dist/`
+- Vite uses `import.meta.env`.
+- Create a `.env` file if needed (e.g., API base URL):
 
-### Contributions
-- Open a PR for changes
-- Keep types strict and avoid `any`
-- Match existing formatting and component patterns
+  ```env
+  VITE_API_BASE_URL=https://api.example.com
+  ```
+
+## Deployment
+
+- Deploy the `dist/` folder to any static host (Netlify, Vercel, GitHub Pages, etc):
+
+  ```bash
+  npm run build
+  ```
+
+## Contributions
+
+- Open a PR for changes.
+- Keep types strict and avoid `any`.
+- Match existing formatting and component patterns.
