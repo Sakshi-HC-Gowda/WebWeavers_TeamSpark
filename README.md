@@ -1,49 +1,103 @@
-# Welcome to our project
+# IEEE SMVITM Website
 
-## Project info
-**Use your preferred IDE**
+React + Vite + TypeScript + Tailwind + shadcn/ui
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
+- Node.js 18+ and npm
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### Getting started
+```powershell
+cd "Website IEEE"
+npm install
 npm run dev
 ```
+The dev server prints the URL (e.g., http://localhost:5173 or http://localhost:8081). Press Ctrl+C to stop.
 
-**Edit a file directly in GitHub**
+### Build
+```bash
+npm run build
+npm run preview
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Project structure
+- `src/pages/` route pages (e.g., `Home.tsx`, `About.tsx`, `Team.tsx`, `Login.tsx`)
+- `src/components/` shared UI (`Header`, `Footer`, `ui/*`)
+- `public/` static assets served as-is
 
-**Use GitHub Codespaces**
+### Routing
+Configured in `src/App.tsx` using `react-router-dom`.
+- Add routes in the `<Routes>` block
+- Header links are defined in `src/components/Header.tsx`
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Login page
+- File: `src/pages/Login.tsx`
+- Simple email/password form with shadcn/ui components
+- On submit, it currently redirects to `/` (placeholder). Wire this to your auth API as needed.
 
-## What technologies are used for this project?
+### Team data (dynamic)
+- Data file: `public/team.json`
+- Page: `src/pages/Team.tsx` fetches `/team.json` at runtime
+- If `team.json` is missing or invalid, the page shows a fallback set
 
-This project is built with:
+Schema (example):
+```json
+{
+  "year": "2024-25",
+  "executiveBoard": [
+    {
+      "name": "Student Name",
+      "position": "Chairperson",
+      "year": "Final Year",
+      "branch": "Electronics & Communication",
+      "email": "name@smvitm.ac.in",
+      "linkedin": "https://www.linkedin.com/in/username",
+      "achievements": ["Award 1", "Award 2"],
+      "photo": "/photos/name.jpg"
+    }
+  ],
+  "coordinators": [
+    {
+      "name": "Faculty Name",
+      "position": "Faculty Advisor",
+      "department": "ECE Department",
+      "email": "name@smvitm.ac.in",
+      "expertise": "Signal Processing, IoT",
+      "photo": "/photos/faculty.jpg"
+    }
+  ],
+  "committees": [
+    {
+      "name": "Technical Committee",
+      "focus": "Organizing technical workshops and seminars",
+      "members": ["Member A", "Member B"]
+    }
+  ]
+}
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Add photos under `public/photos/` and reference with `/photos/<file>`.
 
+### Styling
+- Tailwind CSS configured via `tailwind.config.ts`
+- shadcn/ui components in `src/components/ui/*`
+
+### Linting
+```bash
+npm run lint
+```
+
+### Environment variables
+Vite uses `import.meta.env`. Create a `.env` if needed (e.g., API base URL):
+```env
+VITE_API_BASE_URL=https://api.example.com
+```
+
+### Deployment
+Any static host supporting Vite build output (e.g., Netlify, Vercel, GitHub Pages):
+1. `npm run build`
+2. Deploy `dist/`
+
+### Contributions
+- Open a PR for changes
+- Keep types strict and avoid `any`
+- Match existing formatting and component patterns
